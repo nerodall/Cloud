@@ -1,0 +1,17 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: GateWay
+  cloud:
+    gateway:
+      routes:
+        - id: my_first_crud
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/ui/**
+        - id: service2
+          uri: http://localhost:8082/service2/hello
+          predicates:
+            - Path=/api/**
